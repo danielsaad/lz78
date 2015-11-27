@@ -12,7 +12,7 @@ public:
     	return std::hash<T>()(x.first) ^ std::hash<U>()(x.second);
   	}
 };
-void lz78(std::ifstream input_file, std::ofstream output_file){
+void lz78(std::ifstream& input_file, std::ofstream& output_file){
 	std::unordered_map<std::pair<int64_t,char>,int64_t,
 		hash_pair<int64_t,int8_t>> trie;
 	int64_t lz78_factor = 0;
