@@ -19,7 +19,6 @@ template <>
 class hash_pair<uint64_t,uint8_t> {
 public:
     std::size_t operator()(const std::pair<uint64_t, uint8_t> &x) const {
-        std::cout << "Hash = " << ((std::hash<uint64_t>()(x.first)<<8)  ^ std::hash<uint8_t>()(x.second));
         return ((std::hash<uint64_t>()(x.first)<<8)  ^ std::hash<uint8_t>()(x.second));
     }
 };
@@ -40,8 +39,8 @@ public:
 };
 
 void lz78(std::ifstream& input_file, std::ofstream& output_file){
-//    std::unordered_map<std::pair<uint64_t,uint8_t>,uint64_t,hash_pair<uint64_t,uint8_t>> trie;
-    std::map<std::pair<uint64_t,uint8_t>,uint64_t,cmp> trie;
+    std::unordered_map<std::pair<uint64_t,uint8_t>,uint64_t,hash_pair<uint64_t,uint8_t>> trie;
+    //std::map<std::pair<uint64_t,uint8_t>,uint64_t,cmp> trie;
 	//get length of file
 	input_file.seekg (0, input_file.end);
     int64_t length = input_file.tellg();
